@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Meters{% endblock %}{% block content %}
+<h1>Meters</h1><p class="muted">Each meter code must be unique.</p><section class="panel">{% if consumers %}<form method="post" class="form-grid">
+<label>Consumer<select name="consumer_id" required><option value="">Choose consumer</option>{% for c in consumers %}<option value="{{ c.consumer_id }}">{{ c.name }} — {{ c.region }}</option>{% endfor %}</select></label>
+<label>Meter code<input name="meter_code" maxlength="80" required placeholder="e.g. MTR-1001"></label><button type="submit">Add meter</button></form>{% else %}<p>Add a consumer first.</p>{% endif %}</section>
+<section class="panel"><h2>Meter records</h2><div class="table-wrap"><table><thead><tr><th>ID</th><th>Code</th><th>Consumer</th><th>Region</th></tr></thead><tbody>
+{% for m in meters %}<tr><td>{{ m.meter_id }}</td><td>{{ m.meter_code }}</td><td>{{ m.consumer_name }}</td><td>{{ m.region }}</td></tr>{% else %}<tr><td colspan="4">No meters registered.</td></tr>{% endfor %}
+</tbody></table></div></section>{% endblock %}

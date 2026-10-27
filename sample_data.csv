@@ -1,0 +1,6 @@
+consumer_name,consumer_type,region,meter_code,reading_date,cumulative_kwh
+Demo Home,Residential,Chittoor,MTR-1001,2026-01-01,1000.000
+Demo Home,Residential,Chittoor,MTR-1001,2026-02-01,1125.500
+Demo Home,Residential,Chittoor,MTR-1001,2026-03-01,1268.000
+Demo Shop,Commercial,Tirupati,MTR-2001,2026-01-01,2500.000
+Demo Shop,Commercial,Tirupati,MTR-2001,2026-02-01,2860.000

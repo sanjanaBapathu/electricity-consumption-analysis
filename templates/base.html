@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Electricity Analysis{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header class="topbar"><a class="brand" href="{{ url_for('dashboard') }}">⚡ Electricity Analysis</a><nav>
+<a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('consumers') }}">Consumers</a><a href="{{ url_for('meters') }}">Meters</a><a href="{{ url_for('readings') }}">Readings</a><a href="{{ url_for('reports') }}">Reports</a>
+</nav></header><main class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+{% block content %}{% endblock %}</main><footer>Educational project · kWh units · Not an official billing system</footer></body></html>

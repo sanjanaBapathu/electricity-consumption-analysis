@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}Consumers{% endblock %}{% block content %}
+<h1>Consumers</h1><p class="muted">Create a record for each consumer.</p><section class="panel"><form method="post" class="form-grid">
+<label>Consumer name<input name="name" maxlength="120" required placeholder="e.g. Ravi Kumar"></label>
+<label>Consumer type<select name="consumer_type" required><option value="">Choose type</option><option>Residential</option><option>Commercial</option><option>Industrial</option><option>Institutional</option></select></label>
+<label>Region<input name="region" maxlength="100" required placeholder="e.g. Chittoor"></label><button type="submit">Add consumer</button></form></section>
+<section class="panel"><h2>Consumer records</h2><div class="table-wrap"><table><thead><tr><th>ID</th><th>Name</th><th>Type</th><th>Region</th></tr></thead><tbody>
+{% for c in consumers %}<tr><td>{{ c.consumer_id }}</td><td>{{ c.name }}</td><td>{{ c.consumer_type }}</td><td>{{ c.region }}</td></tr>{% else %}<tr><td colspan="4">No consumers yet.</td></tr>{% endfor %}
+</tbody></table></div></section>{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Readings{% endblock %}{% block content %}
+<h1>Meter readings</h1><p class="muted">Enter the cumulative meter value shown on the meter, in kWh.</p><section class="panel">
+{% if meters %}<form method="post" class="form-grid"><label>Meter<select name="meter_id" required><option value="">Choose meter</option>{% for m in meters %}<option value="{{ m.meter_id }}">{{ m.meter_code }} — {{ m.consumer_name }}</option>{% endfor %}</select></label>
+<label>Reading date<input type="date" name="reading_date" max="{{ today }}" required></label><label>Cumulative reading (kWh)<input type="number" name="cumulative_kwh" min="0" step="0.001" required placeholder="e.g. 1250.500"></label><button type="submit">Save reading</button></form>{% else %}<p>Register a meter first.</p>{% endif %}</section>
+<section class="panel"><h2>Recent readings</h2><div class="table-wrap"><table><thead><tr><th>Date</th><th>Meter</th><th>Consumer</th><th>Cumulative kWh</th></tr></thead><tbody>
+{% for r in readings %}<tr><td>{{ r.reading_date }}</td><td>{{ r.meter_code }}</td><td>{{ r.consumer_name }}</td><td>{{ '%.3f'|format(r.cumulative_kwh) }}</td></tr>{% else %}<tr><td colspan="4">No readings recorded.</td></tr>{% endfor %}
+</tbody></table></div></section>{% endblock %}
